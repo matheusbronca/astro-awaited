@@ -1,0 +1,43 @@
+---
+export interface Props {
+  query: string;
+  page: number;
+}
+
+const { query, page } = Astro.props;
+const _dumb_promise = await new Promise((res) => setTimeout(() => res(true), 1000));
+---
+
+<div class="results-list">
+  <h2>Search Results for "{query}"</h2>
+  <p>Page: {page}</p>
+  <ul>
+    <li>Result 1 for {query}</li>
+    <li>Result 2 for {query}</li>
+    <li>Result 3 for {query}</li>
+  </ul>
+</div>
+
+<style>
+  .results-list {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+  
+  li {
+    margin: 0.5rem 0;
+  }
+</style>
+

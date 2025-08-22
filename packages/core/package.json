@@ -1,0 +1,48 @@
+{
+  "name": "astro-awaited",
+  "version": "0.0.1",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "description": "An Astro integration that provides Awaited and Fallback components with automatic slot transformation",
+  "main": ".src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./setup": {
+      "default": "./dist/setup/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src/index.ts",
+    "typings",
+    "components"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "vitest"
+  },
+  "keywords": [
+    "astro",
+    "integration",
+    "components",
+    "awaited",
+    "fallback",
+    "slots"
+  ],
+  "author": "Matheus Bronca",
+  "license": "MIT",
+  "peerDependencies": {
+    "astro": ">=4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.11",
+    "astro": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
+  }
+}
