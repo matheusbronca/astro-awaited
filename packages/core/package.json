@@ -17,8 +17,8 @@
   "files": [
     "dist",
     "src/index.ts",
-    "typings",
-    "components"
+    "src/typings",
+    "src/components"
   ],
   "scripts": {
     "build": "tsc",
