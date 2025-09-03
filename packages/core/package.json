@@ -1,6 +1,6 @@
 {
   "name": "astro-awaited",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "types": "dist/index.d.ts",
   "description": "An Astro integration that provides Awaited and Fallback components with automatic slot transformation",
