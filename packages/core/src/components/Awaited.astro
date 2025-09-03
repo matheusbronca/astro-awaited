@@ -2,38 +2,35 @@
 interface Props {
   transitionDuration?: number,
   transitionEase?: "linear" | "ease-in" | "ease-out" | "ease-in-out";
+  contentProps?: Record<string, unknown>
 }
 
-const { transitionDuration = 250, transitionEase = 'linear'  } = Astro.props
+const { transitionDuration = 250, transitionEase = 'linear', contentProps, ...rest  } = Astro.props
 
 ---
-<div [data-awaited-wrapper]>
+<div data-awaited-wrapper {...rest} >
   <slot name="fallback" />
-  <slot />
+  <div data-awaited-content {...contentProps} >
+    <slot />
+  </div>
 </div>
-<script>
-  const removeFallbacks = () => {
-      const fallbacks = [...document.querySelectorAll('[data-awaited-fallback]')] ;
-      const hasFallbacks =  fallbacks.length > 0;
-      if(!hasFallbacks) return;
-      fallbacks.forEach(e => {
-      const duration = Number(getComputedStyle(e).animationDuration.split('s')[0]) * 1000;
+<script is:inline>
+    const cleanupAwaitedContent = (e) => {
+      if(e.from.pathname !== e.to.pathname) return;
+      const awaitedContents = document.querySelectorAll('[data-awaited-content]');
+      awaitedContents.forEach(el => el.remove());
+    };
 
-      const id = setInterval(() => { e.remove(); clearInterval(id);}, duration + 50);
-    })
-  }
-
-  removeFallbacks();
-</script>
-<style define:vars={{ animationDuration: `${transitionDuration}ms`, animationEase: transitionEase }}>
-  @keyframes awaitedFadeOut {
-    100% {
-      opacity: 0;
-      visibility: hidden;
+    const handleAwaitedOnTransition = () => {
+      document.addEventListener('astro:before-preparation', cleanupAwaitedContent)
     }
-  }
 
-  div {
+    // Ensure that the event will be added only once
+    document.addEventListener("astro:page-load", handleAwaitedOnTransition, { once: true })
+</script>
+
+<style define:vars={{ animationDuration: `${transitionDuration}ms`, animationEase: transitionEase }}>
+  [data-awaited-wrapper] {
     position: relative; 
   }
 
@@ -42,12 +39,14 @@ const { transitionDuration = 250, transitionEase = 'linear'  } = Astro.props
     opacity: 1;
   }
 
-  div:has(>*:not([data-awaited-fallback])) > :global([data-awaited-fallback]) {
+  [data-awaited-wrapper]:has([data-awaited-content] > *:not(:empty)) > :global([data-awaited-fallback]) {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      animation: awaitedFadeOut var(--animationDuration) var(--animationEase) forwards;
+      overflow: hidden;
+      opacity: 0;
+      transition: all var(--animationDuration) var(--animationEase);
   }
 </style>
