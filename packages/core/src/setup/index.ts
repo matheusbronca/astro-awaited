@@ -1,7 +1,7 @@
 import { AstroIntegration } from "astro";
 import { createPlugin } from "./vite-plugin-astro-awaited.js";
 
-import type { TransformOptions } from "../../typings/integration";
+import type { TransformOptions } from "../typings/integration.js";
 
 export default function createIntegration(
   options: TransformOptions = {},
