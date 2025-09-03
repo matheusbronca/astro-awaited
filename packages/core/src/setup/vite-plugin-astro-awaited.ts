@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import { transformFallbackComponents } from "./fallback-transformer.js";
 
+import type { TransformOptions } from "../typings/integration.js";
 import type { Plugin } from "vite";
 
 export function createPlugin(options: TransformOptions = {}): Plugin {
