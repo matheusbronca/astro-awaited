@@ -1,6 +1,6 @@
 {
   "name": "astro-awaited",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "type": "module",
   "types": "dist/index.d.ts",
   "description": "An Astro integration that enables you to render fallback placeholders while server-side data is being fetched",
@@ -14,6 +14,15 @@
       "default": "./dist/setup/index.js"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusbronca/astro-awaited.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/matheusbronca/astro-awaited/issues"
+  },
+  "homepage": "https://github.com/matheusbronca/astro-awaited",
   "files": [
     "dist",
     "src/index.ts",
@@ -38,7 +47,11 @@
     "optimization",
     "awaited"
   ],
-  "author": "Matheus Bronca",
+  "author": {
+    "name": "Matheus Bronca",
+    "email": "dev@matheusbronca.com",
+    "url": "https://matheusbronca.com"
+  },
   "license": "MIT",
   "peerDependencies": {
     "astro": ">=4.0.0"
