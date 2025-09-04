@@ -1,6 +1,6 @@
 {
   "name": "astro-awaited",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "type": "module",
   "types": "dist/index.d.ts",
   "description": "An Astro integration that enables you to render fallback placeholders while server-side data is being fetched",

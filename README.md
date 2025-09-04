@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/icon.jpg" alt="Astro Awaited - An Astro Integration" />
+  <img width="128" src="./public/icon.jpg" alt="Astro Awaited - An Astro Integration" />
   <h1>⚡ Astro Awaited Integration</h1>
   <p>
     Supercharge your Astro app with **automagic lazy-loaded components** powered by <strong>HTML streaming</strong>. This integration enables you to render fallback placeholders while server-side data is being fetched — <strong>even before the page fully loads</strong>, and <strong>without requiring JavaScript on modern browsers</strong>.
