@@ -2,6 +2,8 @@
 
 Supercharge your Astro app with **automagic lazy-loaded components** powered by **HTML streaming**. This integration enables you to render fallback placeholders while server-side data is being fetched—**even before the page fully loads**, and **without requiring JavaScript** on modern browsers.
 
+![Astro Awaited Integration example]("/public/example.gif")
+
 ## ✨ Features
 
 - 🚀 **Zero JavaScript (Modern Browsers)**  
