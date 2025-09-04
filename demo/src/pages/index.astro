@@ -11,14 +11,11 @@ const searchQuery = "astro integration";
 const searchPage = 1;
 ---
 <Layout>
-	<h1>Astro Integration Test</h1>
-	<p>This page tests the Awaited/Fallback integration functionality.</p>
-	
-	<h2>Testing Awaited/Fallback Integration</h2>
-	<p>The Fallback component below should automatically receive a <code>slot="fallback"</code> attribute:</p>
+	<h1>Astro Awaited Integration Test</h1>
+	<p style="font-size: 16px;">This page tests the Astro Awaited integration functionality.</p>
 	
 	<div class="test-section">
-		<Awaited>
+		<Awaited transitionDuration={250} transitionEase='linear'>
 			<ResultsList query={searchQuery} page={searchPage} />
 			<Fallback>
 				<ResultListPlaceholder />	

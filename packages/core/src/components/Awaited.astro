@@ -1,11 +1,13 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'>{
   transitionDuration?: number,
   transitionEase?: "linear" | "ease-in" | "ease-out" | "ease-in-out";
-  contentProps?: Record<string, unknown>
-}
+  contentProps?: HTMLAttributes<'div'>
+} 
 
-const { transitionDuration = 250, transitionEase = 'linear', contentProps, ...rest  } = Astro.props
+const { transitionDuration = 200, transitionEase = 'linear', contentProps, ...rest  } = Astro.props
 
 ---
 <div data-awaited-wrapper {...rest} >
@@ -14,8 +16,8 @@ const { transitionDuration = 250, transitionEase = 'linear', contentProps, ...re
     <slot />
   </div>
 </div>
-<script is:inline>
-    const cleanupAwaitedContent = (e) => {
+<script>
+    const cleanupAwaitedContent = (e: any) => {
       if(e.from.pathname !== e.to.pathname) return;
       const awaitedContents = document.querySelectorAll('[data-awaited-content]');
       awaitedContents.forEach(el => el.remove());
@@ -27,6 +29,36 @@ const { transitionDuration = 250, transitionEase = 'linear', contentProps, ...re
 
     // Ensure that the event will be added only once
     document.addEventListener("astro:page-load", handleAwaitedOnTransition, { once: true })
+</script>
+<script>
+if (!CSS.supports('selector(:has(*)))')) {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-awaited-wrapper]').forEach(wrapper => {
+        const content:HTMLElement = wrapper.querySelector('[data-awaited-content]');
+        const fallback: HTMLElement = wrapper.querySelector('[data-awaited-fallback]');
+
+        if (!content || !fallback) return;
+
+        const hasVisibleChildren = Array.from(content.children).some(
+          child => child.textContent.trim() !== '' || child.children.length > 0
+        );
+
+        if (hasVisibleChildren) {
+          fallback.style.position = 'absolute';
+          fallback.style.top = '0';
+          fallback.style.left = '0';
+          fallback.style.width = '100%';
+          fallback.style.height = '100%';
+          fallback.style.overflow = 'hidden';
+          fallback.style.opacity = '0';
+          fallback.style.transition = 'all var(--animationDuration) var(--animationEase)';
+        } else {
+          fallback.style.opacity = '1';
+          fallback.style.pointerEvents = 'none';
+        }
+      });
+    });
+  }
 </script>
 
 <style define:vars={{ animationDuration: `${transitionDuration}ms`, animationEase: transitionEase }}>

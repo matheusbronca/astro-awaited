@@ -10,7 +10,7 @@ export default function createIntegration(
     name: "astro-awaited",
     hooks: {
       "astro:config:setup": ({ updateConfig, logger }) => {
-        logger.info("Setting up Awaited/Fallback integration");
+        logger.info("Setting up Astro Awaited integration");
 
         updateConfig({
           vite: {
@@ -18,7 +18,7 @@ export default function createIntegration(
           },
         });
 
-        logger.info("Awaited/Fallback integration configured successfully");
+        logger.info("Astro Awaited integration configured successfully");
       },
     },
   };

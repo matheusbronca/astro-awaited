@@ -43,6 +43,10 @@
 		  body:has(footer) [data-footer-fallback] {
 		    display: none;
 		  }
+
+			footer {
+				margin-top: -2px;
+			}
 		</style>
 	</head>
 	<body style="display: flex; flex-direction: column;">
@@ -50,7 +54,9 @@
 		<!-- This way, we'll be sure that they will be always available during HTML streaming; -->
 		<div data-footer-fallback aria-hidden="true">
 			<h2>Expected Behavior</h2>
-			<p>The integration should automatically transform the Fallback component to include <code>slot="fallback"</code>, making it work properly with the Awaited component's slot system.</p>
+			<p>
+  			The <code>{'Fallback'}</code> component above renders a placeholder while data is being fetched. Once the data is available, the placeholder is automatically replaced with the actual content.
+			</p>
 		</div>
 	  
 	  <main>
@@ -58,7 +64,9 @@
 	  </main>
     <footer>
 			<h2>Expected Behavior</h2>
-			<p>The integration should automatically transform the Fallback component to include <code>slot="fallback"</code>, making it work properly with the Awaited component's slot system.</p>
+			<p>
+  			The <code>{'Fallback'}</code> component above renders a placeholder while data is being fetched. Once the data is available, the placeholder is automatically replaced with the actual content.
+			</p>
     </footer>
 	</body>
 </html>
