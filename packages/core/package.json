@@ -28,11 +28,15 @@
   },
   "keywords": [
     "astro",
-    "integration",
-    "components",
-    "awaited",
-    "fallback",
-    "slots"
+    "astro-awaited",
+    "astro-integration",
+    "astro-component",
+    "astro-placeholder",
+    "astro-fallback",
+    "ui",
+    "performance",
+    "optimization",
+    "awaited"
   ],
   "author": "Matheus Bronca",
   "license": "MIT",
