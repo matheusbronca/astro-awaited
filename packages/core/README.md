@@ -1,8 +1,6 @@
----
 # ⚡ Astro Awaited Integration
 
 Supercharge your Astro app with **automagic lazy-loaded components** powered by **HTML streaming**. This integration enables you to render fallback placeholders while server-side data is being fetched—**even before the page fully loads**, and **without requiring JavaScript** on modern browsers.
----
 
 ## ✨ Features
 
@@ -24,16 +22,12 @@ Supercharge your Astro app with **automagic lazy-loaded components** powered by 
 - ⚡ **Fast Build-Time Performance**  
   Minimal overhead with efficient AST transformations.
 
----
-
 ## 📋 Requirements
 
 - **HTML Streaming must be enabled** on the server.  
   Without streaming, this integration won’t work.
 
 - **Astro v4.0.0+** and **Node.js v18+**
-
----
 
 ## ⚠️ Limitations
 
@@ -108,15 +102,11 @@ import ResultsList from './ResultsList.astro';
 
 Use `Awaited` declaratively, directly in your page layout.
 
----
-
 ## 📦 Installation
 
 ```bash
 npm install astro-awaited
 ```
-
----
 
 ## 🚀 Usage
 
@@ -149,8 +139,6 @@ import ResultsList from './ResultsList.astro';
 </Awaited>
 ```
 
----
-
 ## 🧩 Components
 
 ### `<Awaited>`
@@ -160,8 +148,6 @@ Wraps an async component and conditionally renders its content or a fallback.
 ### `<Fallback>`
 
 Defines the placeholder UI shown while data is loading.
-
----
 
 ## 🛠️ How It Works
 
@@ -174,16 +160,10 @@ Astro Awaited uses a Vite plugin during build time to:
 
 ✅ All transformations happen at build time—no runtime overhead.
 
----
-
 ## 📄 License
 
 MIT
 
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
-
----
