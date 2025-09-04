@@ -1,9 +1,9 @@
 {
   "name": "astro-awaited",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "types": "dist/index.d.ts",
-  "description": "An Astro integration that provides Awaited and Fallback components with automatic slot transformation",
+  "description": "An Astro integration that enables you to render fallback placeholders while server-side data is being fetched",
   "main": ".src/index.ts",
   "exports": {
     ".": {
