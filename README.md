@@ -1,8 +1,11 @@
-# ⚡ Astro Awaited Integration
-
-Supercharge your Astro app with **automagic lazy-loaded components** powered by **HTML streaming**. This integration enables you to render fallback placeholders while server-side data is being fetched—**even before the page fully loads**, and **without requiring JavaScript** on modern browsers.
-
-![Astro Awaited Integration example](./public/example.gif)
+<div align="center">
+  <img src="./public/icon.jpg" alt="Astro Awaited - An Astro Integration" />
+  <h1>⚡ Astro Awaited Integration</h1>
+  <p>
+    Supercharge your Astro app with **automagic lazy-loaded components** powered by <strong>HTML streaming</strong>. This integration enables you to render fallback placeholders while server-side data is being fetched — <strong>even before the page fully loads</strong>, and <strong>without requiring JavaScript on modern browsers</strong>.
+  </p>
+  <img src="./public/example.gif" alt="Astro Awaited - An Astro Integration" />
+</div>
 
 ## ✨ Features
 
