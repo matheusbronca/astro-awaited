@@ -59,7 +59,7 @@ Even though `astro-awaited` is designed to be intuitive, there are a few importa
 ```astro
 ---
 // ResultsListAwaited.astro
-import { Awaited, Fallback } from 'astro-awaited';
+import { Awaited, Fallback } from 'astro-awaited/components';
 import ResultsList from './ResultsList.astro';
 ---
 
@@ -90,7 +90,7 @@ This won’t work—Astro will treat `ResultsListAwaited` as an async component 
 ```astro
 ---
 // index.astro
-import { Awaited, Fallback } from 'astro-awaited';
+import { Awaited, Fallback } from 'astro-awaited/components';
 import ResultsList from './ResultsList.astro';
 ---
 
@@ -120,7 +120,7 @@ npm install astro-awaited
 ```js
 // astro.config.mjs
 import { defineConfig } from "astro/config";
-import awaited from "astro-awaited/setup";
+import awaited from "astro-awaited";
 
 export default defineConfig({
   integrations: [awaited()],
@@ -132,7 +132,7 @@ export default defineConfig({
 ```astro
 ---
 // SearchPage.astro
-import { Awaited, Fallback } from 'astro-awaited';
+import { Awaited, Fallback } from 'astro-awaited/components';
 import ResultsList from './ResultsList.astro';
 ---
 
@@ -148,11 +148,67 @@ import ResultsList from './ResultsList.astro';
 
 ### `<Awaited>`
 
-Wraps an async component and conditionally renders its content or a fallback.
+Absolutely! Here's a polished **Components** section for your README that showcases the `Awaited` component, its props, customization options, and behavior in a developer-friendly and visually structured way:
 
-### `<Fallback>`
+---
 
-Defines the placeholder UI shown while data is loading.
+## ⚙️ Components
+
+### `<Awaited />`
+
+The `Awaited` component provides a graceful fallback mechanism for Astro pages during navigation transitions. It ensures that fallback content is displayed only when the awaited content is not yet ready, and automatically cleans up after route changes.
+
+#### 🧩 Props
+
+| Prop                 | Type                                                   | Default     | Description                                                                     |
+| -------------------- | ------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------- |
+| `transitionDuration` | `number`                                               | `200`       | Duration (in ms) for the fallback transition animation.                         |
+| `transitionEase`     | `"linear" \| "ease-in" \| "ease-out" \| "ease-in-out"` | `"linear"`  | CSS easing function for the fallback transition.                                |
+| `contentProps`       | `HTMLAttributes<'div'>`                                | `undefined` | Props passed directly to the inner content container (`data-awaited-content`).  |
+| `...rest`            | `HTMLAttributes<'div'>`                                | —           | Any additional props are applied to the outer wrapper (`data-awaited-wrapper`). |
+
+#### 🎬 Behavior
+
+- **Automatic Cleanup**: On route transitions, the component removes any lingering awaited content to prevent duplication.
+- **Fallback Visibility**: If the awaited content is empty or not yet rendered, the fallback remains visible. Once content is detected, the fallback fades out smoothly.
+- **CSS Fallback**: If `:has()` is unsupported by the browser, the component manually toggles fallback visibility using JavaScript.
+
+#### 🎨 Styling
+
+The component uses CSS variables for animation control:
+
+```css
+--animationDuration: ${transitionDuration}ms;
+--animationEase: ${transitionEase};
+```
+
+These are applied to the fallback element for smooth transitions.
+
+### `<Fallback />`
+
+The `<Fallback>` component defines the placeholder UI shown while awaited content is loading or unavailable. It’s designed to be slotted into the `<Awaited>` component using the `fallback` slot, and it automatically transitions out once the awaited content becomes visible.
+
+#### 📦 Usage
+
+```astro
+<Awaited>
+  <Fallback>
+    <div class="spinner" />
+  </Fallback>
+
+  <div>
+    <!-- Your awaited content here -->
+  </div>
+</Awaited>
+```
+
+> You can also use any custom markup inside `<Fallback>`—it’s just a semantic wrapper to help with styling and behavior.
+
+#### 🎯 Purpose
+
+- Acts as a **visual placeholder** while data or content is being fetched.
+- Automatically **fades out** when awaited content becomes available.
+- Integrates seamlessly with the `Awaited` component’s transition system.
 
 ## 🛠️ How It Works
 
