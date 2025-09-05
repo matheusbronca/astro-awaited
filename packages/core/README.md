@@ -120,7 +120,7 @@ npm install astro-awaited
 ```js
 // astro.config.mjs
 import { defineConfig } from "astro/config";
-import awaited from "astro-awaited";
+import awaited from "astro-awaited/setup";
 
 export default defineConfig({
   integrations: [awaited()],
