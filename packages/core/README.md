@@ -144,14 +144,6 @@ import ResultsList from './ResultsList.astro';
 </Awaited>
 ```
 
-## 🧩 Components
-
-### `<Awaited>`
-
-Absolutely! Here's a polished **Components** section for your README that showcases the `Awaited` component, its props, customization options, and behavior in a developer-friendly and visually structured way:
-
----
-
 ## ⚙️ Components
 
 ### `<Awaited />`
