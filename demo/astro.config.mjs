@@ -1,5 +1,5 @@
 // @ts-check
-import awaited from "astro-awaited/setup";
+import awaited from "astro-awaited";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
